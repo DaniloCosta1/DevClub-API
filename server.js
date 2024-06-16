@@ -27,11 +27,11 @@ const users = [];
 app.post('/users', (req, res) => {
     
     users.push(req.body);
-    res.send('usuário cadstrado com sucesso!');
+    res.status(201).json(req.body);
 });
 
 app.get('/users', (request, response) => {
-    response.json(users);
+    response.status(200).json(users);
 });
 
 app.listen(3000);
