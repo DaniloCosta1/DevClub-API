@@ -1,5 +1,6 @@
 import express, { request, response } from 'express'
 const app = express();
+app.use(express.json());
 
 /*HTTP MÉTODOS
 GET -> LISTAR
@@ -23,13 +24,14 @@ DELETE -> DELETAR
 
 const users = [];
 
-app.post('/usuarios', (req, res) => {
-    console.log(req);
-    res.send('ok, aqui deu certo');
+app.post('/users', (req, res) => {
+    
+    users.push(req.body);
+    res.send('usuário cadstrado com sucesso!');
 });
 
-app.get('/usuarios', (request, response) => {
-    response.send('ok, deu bom')
+app.get('/users', (request, response) => {
+    response.json(users);
 });
 
 app.listen(3000);
